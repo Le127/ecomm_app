@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class ProductCard extends StatefulWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  final List<String> link;
+
+  const ProductCard({Key? key, required this.link}) : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
-//primera de la lista
-  String urlImage =
-      "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp";
+  late String urlImage;
   double value = 3.5;
-  bool isSelected = false;
   String dropdownValue = "S";
+  @override
+  void initState() {
+    urlImage = widget.link[0];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,40 +35,13 @@ class _ProductCardState extends State<ProductCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                    child: Image.network(
-                        "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp",
-                        width: 50,
-                        height: 50),
-                    onTap: () => setState(() {
-                          urlImage =
-                              "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp";
-                        })),
-                GestureDetector(
-                    child: Image.network(
-                        "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
-                        width: 50,
-                        height: 50),
-                    onTap: () => setState(() {
-                          urlImage =
-                              "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp";
-                        })),
-                Image.network(
-                    "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp",
-                    width: 50,
-                    height: 50),
-                Image.network(
-                    "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp",
-                    width: 50,
-                    height: 50),
-                Image.network(
-                    "https://http2.mlstatic.com/D_NQ_NP_612012-MLA47560182865_092021-O.webp",
-                    width: 50,
-                    height: 50),
-                Image.network(
-                    "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
-                    width: 50,
-                    height: 50),
+                ...widget.link.map(
+                  (e) => GestureDetector(
+                      child: Image.network(e, width: 50, height: 50),
+                      onTap: () => setState(() {
+                            urlImage = e;
+                          })),
+                )
               ],
             ),
             const SizedBox(height: 10),
