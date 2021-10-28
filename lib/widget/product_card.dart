@@ -14,6 +14,7 @@ class _ProductCardState extends State<ProductCard> {
   late String urlImage;
   double value = 3.5;
   String dropdownValue = "S";
+
   @override
   void initState() {
     urlImage = widget.link[0];
