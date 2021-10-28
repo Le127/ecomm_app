@@ -1,6 +1,7 @@
 import 'package:ecomm_app/pages/accessory_page.dart';
 import 'package:ecomm_app/pages/game_page.dart';
 import 'package:ecomm_app/pages/tech_page.dart';
+import 'package:ecomm_app/pages/unique_product_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecomm_app/pages/all_products_page.dart';
@@ -16,9 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecomm App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ecomm App Bar'),
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Ecomm App Bar'),
+          ),
         ),
       ),
       initialRoute: "allProducts",
@@ -28,6 +31,7 @@ class MyApp extends StatelessWidget {
         "tech": (_) => const TechPage(),
         "accessory": (_) => const AccessoryPage(),
         "game": (_) => const GamePage(),
+        "uniqueProduct": (_) => const UniqueProductPage(urlImage: []),
       },
     );
   }
