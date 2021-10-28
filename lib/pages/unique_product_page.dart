@@ -29,7 +29,7 @@ class UniqueProductPage extends StatelessWidget {
           Expanded(
             child: Container(
               margin: const EdgeInsets.all(30),
-              child: ProductCard(link: urlImage, detail: 'Cartons T-shirt',),
+              child: ProductCard(link: urlImage, detail: 'Cartons T-shirt', price: 9.99,),
             ),
           )
         ]),

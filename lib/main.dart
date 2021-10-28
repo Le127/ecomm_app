@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecomm App',
+     // theme: ThemeData(primaryColor: ),
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
