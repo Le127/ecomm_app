@@ -5,10 +5,17 @@ class ProductCard extends StatefulWidget {
   final List<String> link;
   final String detail;
   final double price;
+  final bool? dropDown;
+  final List<String>? dropDownValues;
 
-  const ProductCard(
-      {Key? key, required this.link, required this.detail, required this.price})
-      : super(key: key);
+  const ProductCard({
+    Key? key,
+    required this.link,
+    required this.detail,
+    required this.price,
+    this.dropDown,
+    this.dropDownValues,
+  }) : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -16,12 +23,17 @@ class ProductCard extends StatefulWidget {
 
 class _ProductCardState extends State<ProductCard> {
   late String urlImage;
+  late String? dropdownValue;
   double value = 3.5;
-  String dropdownValue = "S";
 
   @override
   void initState() {
     urlImage = widget.link[0];
+    if (widget.dropDown == true && widget.dropDownValues!.isNotEmpty) {
+      dropdownValue = widget.dropDownValues![0];
+    } else {
+      dropdownValue = "";
+    }
     super.initState();
   }
 
@@ -54,8 +66,9 @@ class _ProductCardState extends State<ProductCard> {
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
             const SizedBox(height: 10),
-             Text("\$ ${widget.price}",
-                style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text("\$ ${widget.price}",
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             RatingStars(
                 value: value,
@@ -64,20 +77,25 @@ class _ProductCardState extends State<ProductCard> {
                   setState(() => value = v);
                 }),
             const SizedBox(height: 10),
-            DropdownButton(
-              items: <String>['S', 'M', 'L', 'XL'].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              value: dropdownValue,
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue = newValue!;
-                });
-              },
-            ),
+
+            //dropDown?
+            widget.dropDown == true
+                ? DropdownButton(
+                    items:
+                        <String>[...widget.dropDownValues!].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    value: dropdownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                  )
+                : const SizedBox(height: 40),
             const SizedBox(height: 10),
             ElevatedButton(
                 style: ButtonStyle(

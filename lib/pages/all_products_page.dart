@@ -66,12 +66,12 @@ class AllProductsPage extends StatelessWidget {
                   color: Colors.green.shade300.withOpacity(0.9),
                   child: const Center(
                       child: FaIcon(
-                    FontAwesomeIcons.glasses,
+                    FontAwesomeIcons.solidFutbol,
                     size: 65,
                     color: Colors.black,
                   )),
                 ),
-                onTap: () => {Navigator.pushNamed(context, "accessory")},
+                onTap: () => {Navigator.pushNamed(context, "sports")},
               ),
             ],
           ),

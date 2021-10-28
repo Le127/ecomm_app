@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:ecomm_app/pages/unique_product_page.dart';
 
 class ProductSimpleView extends StatelessWidget {
-  final String urlImage;
   final String productDetail;
-  final List<String> otherUrlImage;
+  final List<String> linkList;
   final double price;
+  final bool? dropDown;
+  final List<String>? dropDownValues;
 
   const ProductSimpleView({
     Key? key,
-    required this.urlImage,
     required this.productDetail,
     required this.price,
-    this.otherUrlImage = const [],
+    this.linkList = const [],
+    this.dropDown,
+    this.dropDownValues,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -35,17 +37,29 @@ class ProductSimpleView extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => UniqueProductPage(urlImage: otherUrlImage))),
+        context,
+        MaterialPageRoute(
+          builder: (_) => UniqueProductPage(
+            urlImage: linkList,
+            detail: productDetail,
+            price: price,
+            dropDown: dropDown,
+            dropDownValues: dropDownValues,
+          ),
+        ),
+      ),
       child: Card(
         child: Column(
           children: [
             Expanded(
                 flex: 2,
-                child: Image.network(urlImage, width: 175, height: 175)),
+                child: Image.network(linkList[0], width: 175, height: 175)),
             const SizedBox(height: 5),
-            Expanded(child: Text(productDetail)),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(productDetail, textAlign: TextAlign.center),
+            )),
             const SizedBox(height: 5),
             Expanded(
               flex: 1,
