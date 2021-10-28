@@ -1,5 +1,6 @@
-import 'package:ecomm_app/widget/product_simple_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:ecomm_app/widget/product_simple_view.dart';
 
 class ClothingPage extends StatelessWidget {
   const ClothingPage({Key? key}) : super(key: key);
@@ -7,6 +8,7 @@ class ClothingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+  
     double widthSize = 350;
 
     if (size.width >= 1091 && size.height >= 624) {
@@ -15,7 +17,9 @@ class ClothingPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Clothing Page"),
+        iconTheme:const IconThemeData(color: Colors.black),
+        title: const Text("Clothing Page", style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.yellow.shade300.withOpacity(0.9),
       ),
       body: Center(
         child: SizedBox(
@@ -24,6 +28,7 @@ class ClothingPage extends StatelessWidget {
           //constraints: BoxConstraints(minWidth: minWidth, minHeight: minHeight),
 
           child: SingleChildScrollView(
+            padding: const EdgeInsets.only(top: 20),
             physics: const BouncingScrollPhysics(),
             child: GridView.count(
                 crossAxisCount: 2,
