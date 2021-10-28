@@ -6,7 +6,14 @@ class TechPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme:const IconThemeData(color: Colors.black),
+        title: const Text(
+          "Tech Page",
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.deepPurple.shade300.withOpacity(0.9),
+      ),
       body: const Center(
         child: Text('TechPage'),
       ),

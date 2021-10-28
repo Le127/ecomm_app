@@ -15,63 +15,66 @@ class AllProductsPage extends StatelessWidget {
       heightSize = 500;
     }
 
-    return Center(
-      child: SizedBox(
-        width: widthSize,
-        height: heightSize,
-        child: GridView.count(
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          children: [
-            GestureDetector(
-              child: Card(
-                color: Colors.yellow.shade300.withOpacity(0.9),
-                child: const Center(
-                    child: FaIcon(
-                  FontAwesomeIcons.tshirt,
-                  size: 65,
-                  color: Colors.black,
-                )),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: SizedBox(
+          width: widthSize,
+          height: heightSize,
+          child: GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            children: [
+              GestureDetector(
+                child: Card(
+                  color: Colors.yellow.shade300.withOpacity(0.9),
+                  child: const Center(
+                      child: FaIcon(
+                    FontAwesomeIcons.tshirt,
+                    size: 65,
+                    color: Colors.black,
+                  )),
+                ),
+                onTap: () => {Navigator.pushNamed(context, "clothing")},
               ),
-              onTap: () => {Navigator.pushNamed(context, "clothing")},
-            ),
-            GestureDetector(
-              child: Card(
-                color: Colors.deepPurple.shade300.withOpacity(0.9),
-                child: const Center(
-                    child: FaIcon(
-                  FontAwesomeIcons.tv,
-                  size: 65,
-                  color: Colors.black,
-                )),
+              GestureDetector(
+                child: Card(
+                  color: Colors.deepPurple.shade300.withOpacity(0.9),
+                  child: const Center(
+                      child: FaIcon(
+                    FontAwesomeIcons.tv,
+                    size: 65,
+                    color: Colors.black,
+                  )),
+                ),
+                onTap: () => {Navigator.pushNamed(context, "tech")},
               ),
-              onTap: () => {Navigator.pushNamed(context, "tech")},
-            ),
-            GestureDetector(
-              child: Card(
-                color: Colors.red.shade300.withOpacity(0.9),
-                child: const Center(
-                    child: FaIcon(
-                  FontAwesomeIcons.gamepad,
-                  size: 65,
-                  color: Colors.black,
-                )),
+              GestureDetector(
+                child: Card(
+                  color: Colors.red.shade300.withOpacity(0.9),
+                  child: const Center(
+                      child: FaIcon(
+                    FontAwesomeIcons.gamepad,
+                    size: 65,
+                    color: Colors.black,
+                  )),
+                ),
+                onTap: () => {Navigator.pushNamed(context, "game")},
               ),
-              onTap: () => {Navigator.pushNamed(context, "game")},
-            ),
-            GestureDetector(
-              child: Card(
-                color: Colors.green.shade300.withOpacity(0.9),
-                child: const Center(
-                    child: FaIcon(
-                  FontAwesomeIcons.glasses,
-                  size: 65,
-                  color: Colors.black,
-                )),
+              GestureDetector(
+                child: Card(
+                  color: Colors.green.shade300.withOpacity(0.9),
+                  child: const Center(
+                      child: FaIcon(
+                    FontAwesomeIcons.glasses,
+                    size: 65,
+                    color: Colors.black,
+                  )),
+                ),
+                onTap: () => {Navigator.pushNamed(context, "accessory")},
               ),
-              onTap: () => {Navigator.pushNamed(context, "accessory")},
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

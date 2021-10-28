@@ -6,7 +6,14 @@ class GamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+       appBar: AppBar(
+         iconTheme:const IconThemeData(color: Colors.black),
+        title: const Text(
+          "Game Page",
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.red.shade300.withOpacity(0.9),
+      ),
       body: const Center(
         child: Text('GamePage'),
       ),
