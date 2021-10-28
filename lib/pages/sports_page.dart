@@ -15,7 +15,12 @@ class SportsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sports Page"),
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
+          "Accessory Page",
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.green.shade300.withOpacity(0.9),
       ),
       body: Center(
         child: SizedBox(

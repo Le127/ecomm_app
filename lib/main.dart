@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
 import 'package:ecomm_app/pages/unique_product_page.dart';
 import 'package:ecomm_app/pages/all_products_page.dart';
@@ -6,6 +7,16 @@ import 'package:ecomm_app/pages/clothing_page.dart';
 import 'package:ecomm_app/pages/sports_page.dart';
 import 'package:ecomm_app/pages/game_page.dart';
 import 'package:ecomm_app/pages/tech_page.dart';
+=======
+
+import 'package:ecomm_app/pages/accessory_page.dart';
+import 'package:ecomm_app/pages/all_products_page.dart';
+import 'package:ecomm_app/pages/clothing_page.dart';
+import 'package:ecomm_app/pages/game_page.dart';
+import 'package:ecomm_app/pages/tech_page.dart';
+import 'package:ecomm_app/pages/unique_product_page.dart';
+
+>>>>>>> 3445dfd2abebd5ce0916dad2f77b42db179fcca6
 
 void main() => runApp(const MyApp());
 
@@ -17,7 +28,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecomm App',
-      // theme: ThemeData(primaryColor: ),
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
