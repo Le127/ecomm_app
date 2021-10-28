@@ -3,8 +3,10 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class ProductCard extends StatefulWidget {
   final List<String> link;
+  final String detail;
 
-  const ProductCard({Key? key, required this.link}) : super(key: key);
+  const ProductCard({Key? key, required this.link, required this.detail})
+      : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -46,8 +48,9 @@ class _ProductCardState extends State<ProductCard> {
               ],
             ),
             const SizedBox(height: 10),
-            const Text("Remera Top full",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
+            Text(widget.detail,
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
             const SizedBox(height: 10),
             const Text("\$201.99",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
