@@ -4,6 +4,7 @@ import 'package:ecomm_app/pages/unique_product_page.dart';
 class ProductSimpleView extends StatelessWidget {
   final String urlImage;
   final String productDetail;
+  final List<String> otherUrlImage;
   final double price;
 
   const ProductSimpleView({
@@ -11,6 +12,7 @@ class ProductSimpleView extends StatelessWidget {
     required this.urlImage,
     required this.productDetail,
     required this.price,
+    this.otherUrlImage = const [],
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class ProductSimpleView extends StatelessWidget {
       onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (_) => UniqueProductPage(urlImage: [urlImage]))),
+              builder: (_) => UniqueProductPage(urlImage: otherUrlImage))),
       child: Card(
         child: Column(
           children: [
