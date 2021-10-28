@@ -25,7 +25,14 @@ class UniqueProductPage extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
       ),
       body: Center(
-        child: ProductCard(link: urlImage),
+        child: Flex(direction: Axis.vertical, children: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.all(30),
+              child: ProductCard(link: urlImage),
+            ),
+          )
+        ]),
       ),
     );
   }

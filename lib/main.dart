@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecomm App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ecomm App Bar'),
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Ecomm App Bar'),
+          ),
         ),
       ),
       initialRoute: "allProducts",
