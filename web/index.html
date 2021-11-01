@@ -29,12 +29,17 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <title>ecomm_app</title>
-  <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
   <link rel="manifest" href="manifest.json">
+
+</head>
+
+
+<body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
 
   <script>
 
-    // Your web app's Firebase configuration
 
     const firebaseConfig = {
 
@@ -52,16 +57,10 @@
 
     };
     // Initialize Firebase
-
-    const app = initializeApp(firebaseConfig);
-
+    firebase.initializeApp(firebaseConfig);
   </script>
 
-
-</head>
-
-
-<body>
+  </script>
 
   <script>
     var serviceWorkerVersion = null;
