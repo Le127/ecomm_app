@@ -42,7 +42,7 @@ class ClothingPage extends StatelessWidget {
                       "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
                       "https://http2.mlstatic.com/D_NQ_NP_786969-MLA47560237400_092021-O.webp",
                       "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp",
-                      "https://http2.mlstatic.com/D_NQ_NP_918559-MLA45861441541_052021-O.webp"
+                      "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp"
                     ],
                     productDetail: "Sponje Bob T-shirt",
                     price: 10.99,
