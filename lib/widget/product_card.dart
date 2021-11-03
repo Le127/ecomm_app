@@ -3,18 +3,20 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class ProductCard extends StatefulWidget {
   final List<String> link;
-  final String detail;
+  final String detailName;
   final double price;
   final bool? dropDown;
   final List<String>? dropDownValues;
+  final String? detail;
 
   const ProductCard({
     Key? key,
     required this.link,
-    required this.detail,
+    required this.detailName,
     required this.price,
     this.dropDown,
     this.dropDownValues,
+    this.detail
   }) : super(key: key);
 
   @override
@@ -62,7 +64,7 @@ class _ProductCardState extends State<ProductCard> {
               ],
             ),
             const SizedBox(height: 10),
-            Text(widget.detail,
+            Text(widget.detailName,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
             const SizedBox(height: 10),
@@ -95,7 +97,7 @@ class _ProductCardState extends State<ProductCard> {
                       });
                     },
                   )
-                : const SizedBox(height: 40),
+                : Text(widget.detail!),
             const SizedBox(height: 10),
             ElevatedButton(
                 style: ButtonStyle(

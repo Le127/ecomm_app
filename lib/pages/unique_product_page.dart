@@ -4,17 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UniqueProductPage extends StatelessWidget {
   final List<String> urlImage;
-  final String? detail;
+  final String? detailName;
   final double? price;
   final List<String>? dropDownValues;
   final bool? dropDown;
+  final String? detail;
 
   const UniqueProductPage(
       {Key? key,
       required this.urlImage,
-      this.detail,
+      this.detailName,
       this.price,
       this.dropDownValues,
+      this.detail,
       this.dropDown})
       : super(key: key);
 
@@ -42,10 +44,11 @@ class UniqueProductPage extends StatelessWidget {
               margin: const EdgeInsets.all(30),
               child: ProductCard(
                 link: urlImage,
-                detail: detail!,
+                detailName: detail!,
                 price: price!,
                 dropDown: dropDown,
                 dropDownValues: dropDownValues,
+                detail: detail,
               ),
             ),
           )
