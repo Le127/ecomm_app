@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecomm_app/db/helpers/clothing_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:ecomm_app/db/helpers/clothing_helpers.dart';
 
 import 'package:ecomm_app/widget/product_simple_view.dart';
 
@@ -44,74 +45,58 @@ class ClothingPage extends StatelessWidget {
         ),
         backgroundColor: Colors.yellow.shade300.withOpacity(0.9),
       ),
-      body: Column(
-        children: [
-          FutureBuilder(
-            future: clothings.doc("INLhUzsvzQKQSSKMx5Xf").get(),
-            builder: (BuildContext context,
-                AsyncSnapshot<DocumentSnapshot> snapshot) {
-              if (snapshot.hasError) {
-                return const Text("Something went wrong");
-              }
+      body: FutureBuilder<QuerySnapshot>(
+        future: clothings.get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text("Something went wrong");
+          }
 
-              if (snapshot.hasData && !snapshot.data!.exists) {
-                return const Text("Document does not exist");
-              }
+          if (snapshot.connectionState == ConnectionState.done) {
+            List<Clothings> getClothingsFromQuery(QuerySnapshot snapshot) {
+              return snapshot.docs.map((DocumentSnapshot doc) {
+                return Clothings(
+                    linkList: [...doc['linkList']],
+                    productDetail: doc['productDetail'],
+                    price:  doc['price'].toDouble(),
+                    dropDown: doc['dropDown'],
+                    dropDownValues: [...doc['dropDownValues']]);
+              }).toList();
+            }
 
-              if (snapshot.connectionState == ConnectionState.done) {
-                Map<String, dynamic> data =
-                    snapshot.data!.data() as Map<String, dynamic>;
-                return Text("Name: ${data['productDetail']} ${data['price']}");
-              }
+            final listClothings = getClothingsFromQuery(snapshot.data!);
 
-              return const Text("loading");
-            },
-          ),
-          Center(
-            child: SizedBox(
-              width: widthSize,
-              // height: heightSize,
-              //constraints: BoxConstraints(minWidth: minWidth, minHeight: minHeight),
-
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.only(top: 20),
-                physics: const BouncingScrollPhysics(),
+            return Center(
+              child: SizedBox(
+                width: widthSize,
                 child: GridView.count(
+                  padding:const EdgeInsets.only(top: 20),
                     crossAxisCount: 2,
                     crossAxisSpacing: 2,
                     mainAxisSpacing: 2,
                     childAspectRatio: 0.8,
                     shrinkWrap: true,
-                    children: const [
-                      ProductSimpleView(
-                        linkList: [
-                          "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_786969-MLA47560237400_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp"
-                        ],
-                        productDetail: "Sponje Bob T-shirt",
-                        price: 10.99,
-                        dropDown: true,
-                        dropDownValues: ["S", "M", "L", "XL"],
-                      ),
-                      ProductSimpleView(
-                        linkList: [
-                          "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_786969-MLA47560237400_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp",
-                          "https://http2.mlstatic.com/D_NQ_NP_918559-MLA45861441541_052021-O.webp"
-                        ],
-                        productDetail: "Sponje Bob T-shirt",
-                        price: 10.99,
-                        dropDown: true,
-                        dropDownValues: ["S", "M", "L", "XL"],
-                      ),
+                    physics: const BouncingScrollPhysics(),
+                   
+                    children: [
+                      
+                      ...listClothings
+                          .map((e) => ProductSimpleView(
+                                linkList: e.linkList!,
+                                productDetail: e.productDetail!,
+                                price: e.price!,
+                                dropDown: e.dropDown!,
+                                dropDownValues: e.dropDownValues,
+                              ))
+                          .toList()
                     ]),
               ),
-            ),
-          ),
-        ],
+            );
+          }
+
+          return const Center(child: CircularProgressIndicator());
+        },
       ),
     );
   }

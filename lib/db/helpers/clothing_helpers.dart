@@ -26,7 +26,7 @@ class Clothings {
         .add({
           "productDetail": productDetail,
           "linkList": linkList,
-          "price": price,
+          "price": price!.toDouble(),
           "dropDown": dropDown,
           "dropDownValues": dropDownValues,
         })
