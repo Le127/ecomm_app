@@ -26,7 +26,7 @@ class SportsPage extends StatelessWidget {
             "https://http2.mlstatic.com/D_NQ_NP_930586-MLA46582043771_072021-O.webp",
             "https://http2.mlstatic.com/D_NQ_NP_786373-MLA31095682546_062019-O.webp",
           ],
-          productDetail: "Molten Gr7 Basketball Ball",
+          name: "Molten Gr7 Basketball Ball",
           price: 26.99,
         );
 
@@ -52,7 +52,7 @@ class SportsPage extends StatelessWidget {
                 return snapshot.docs.map((DocumentSnapshot doc) {
                   return Sports(
                       linkList: [...doc['linkList']],
-                      productDetail: doc['productDetail'],
+                      name: doc['name'],
                       price: doc['price'].toDouble(),
                       dropDown: doc['dropDown'],
                       dropDownValues: [...doc['dropDownValues']]);
@@ -76,7 +76,7 @@ class SportsPage extends StatelessWidget {
                         ...listSports
                             .map((e) => ProductSimpleView(
                                   linkList: e.linkList!,
-                                  productDetail: e.productDetail!,
+                                  productDetail: e.name!,
                                   price: e.price!,
                                   dropDown: e.dropDown!,
                                   dropDownValues: e.dropDownValues,

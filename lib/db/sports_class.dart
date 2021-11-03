@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Sports {
-  final String? productDetail;
+  final String? name;
   final List<String>? linkList;
   final double? price;
   final bool? dropDown;
   final List<String>? dropDownValues;
 
   Sports({
-    this.productDetail,
+    this.name,
     this.linkList,
     this.price,
     this.dropDown,
@@ -24,7 +24,7 @@ class Sports {
     //add clothes in sports collection
     return sports
         .add({
-          "productDetail": productDetail,
+          "name": name,
           "linkList": linkList,
           "price": price!.toDouble(),
           "dropDown": dropDown,
