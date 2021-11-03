@@ -42,13 +42,12 @@ class ProductSimpleView extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (_) => UniqueProductPage(
-            urlImage: linkList,
-            detailName: productDetail,
-            price: price,
-            dropDown: dropDown,
-            dropDownValues: dropDownValues,
-            detail : detail
-          ),
+              urlImage: linkList,
+              detailName: productDetail,
+              price: price,
+              dropDown: dropDown,
+              dropDownValues: dropDownValues,
+              detail: detail),
         ),
       ),
       child: Card(

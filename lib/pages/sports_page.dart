@@ -21,14 +21,15 @@ class SportsPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Sports(
-          linkList: [
-            "https://http2.mlstatic.com/D_NQ_NP_757009-MLA46582195155_072021-O.webp",
-            "https://http2.mlstatic.com/D_NQ_NP_930586-MLA46582043771_072021-O.webp",
-            "https://http2.mlstatic.com/D_NQ_NP_786373-MLA31095682546_062019-O.webp",
-          ],
-          name: "Molten Gr7 Basketball Ball",
-          price: 26.99,
-        );
+            linkList: [
+              "https://http2.mlstatic.com/D_NQ_NP_757009-MLA46582195155_072021-O.webp",
+              "https://http2.mlstatic.com/D_NQ_NP_930586-MLA46582043771_072021-O.webp",
+              "https://http2.mlstatic.com/D_NQ_NP_786373-MLA31095682546_062019-O.webp",
+            ],
+            name: "Molten Gr7 Basketball Ball",
+            price: 26.99,
+            dropDown: false,
+            detail: "Size");
 
         clothes.addSport(clothes);
       }),
@@ -55,7 +56,7 @@ class SportsPage extends StatelessWidget {
                       name: doc['name'],
                       price: doc['price'].toDouble(),
                       dropDown: doc['dropDown'],
-                      dropDownValues: [...doc['dropDownValues']]);
+                      detail: doc['detail']);
                 }).toList();
               }
 
@@ -75,12 +76,11 @@ class SportsPage extends StatelessWidget {
                       children: [
                         ...listSports
                             .map((e) => ProductSimpleView(
-                                  linkList: e.linkList!,
-                                  productDetail: e.name!,
-                                  price: e.price!,
-                                  dropDown: e.dropDown!,
-                                  dropDownValues: e.dropDownValues,
-                                ))
+                                linkList: e.linkList!,
+                                productDetail: e.name!,
+                                price: e.price!,
+                                dropDown: e.dropDown!,
+                                detail: e.detail))
                             .toList()
                       ],
                     ),

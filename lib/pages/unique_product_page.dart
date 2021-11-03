@@ -44,7 +44,7 @@ class UniqueProductPage extends StatelessWidget {
               margin: const EdgeInsets.all(30),
               child: ProductCard(
                 link: urlImage,
-                detailName: detail!,
+                detailName: detailName!,
                 price: price!,
                 dropDown: dropDown,
                 dropDownValues: dropDownValues,

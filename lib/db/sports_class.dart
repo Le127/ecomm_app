@@ -5,15 +5,10 @@ class Sports {
   final List<String>? linkList;
   final double? price;
   final bool? dropDown;
-  final List<String>? dropDownValues;
 
-  Sports({
-    this.name,
-    this.linkList,
-    this.price,
-    this.dropDown,
-    this.dropDownValues,
-  });
+  final String? detail;
+
+  Sports({this.name, this.linkList, this.price, this.dropDown, this.detail});
 
 //
 //ADD
@@ -28,7 +23,7 @@ class Sports {
           "linkList": linkList,
           "price": price!.toDouble(),
           "dropDown": dropDown,
-          "dropDownValues": dropDownValues,
+          "detail": detail
         })
         // ignore: avoid_print
         .then((value) => print("added sports"))
