@@ -24,16 +24,16 @@ class ClothingPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Clothings(
-            productDetail: "Sponje Bob T-shirt",
+            productDetail: "Diver Hoodie with Slim Kangaroo Hood",
             linkList: [
-              "https://http2.mlstatic.com/D_NQ_NP_682844-MLA47517377636_092021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_786969-MLA47560237400_092021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_796991-MLA47480511712_092021-O.webp"
+              "https://http2.mlstatic.com/D_NQ_NP_826312-MLA46641084841_072021-O.webp",
+              "https://http2.mlstatic.com/D_NQ_NP_625107-MLA46641186054_072021-O.webp",
+              "https://http2.mlstatic.com/D_NQ_NP_880823-MLA46641171178_072021-O.webp",
+              "https://http2.mlstatic.com/D_NQ_NP_811480-MLA46641098734_072021-O.webp"
             ],
-            price: 25,
+            price: 15.99,
             dropDown: true,
-            dropDownValues: ["S", "M", "L", "XL"]);
+            dropDownValues: ["S", "M", "X", "XL"]);
 
         clothes.addClothes(clothes);
       }),
@@ -47,8 +47,7 @@ class ClothingPage extends StatelessWidget {
       ),
       body: FutureBuilder<QuerySnapshot>(
         future: clothings.get(),
-        builder:
-            (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text("Something went wrong");
           }
@@ -59,7 +58,7 @@ class ClothingPage extends StatelessWidget {
                 return Clothings(
                     linkList: [...doc['linkList']],
                     productDetail: doc['productDetail'],
-                    price:  doc['price'].toDouble(),
+                    price: doc['price'].toDouble(),
                     dropDown: doc['dropDown'],
                     dropDownValues: [...doc['dropDownValues']]);
               }).toList();
@@ -71,16 +70,14 @@ class ClothingPage extends StatelessWidget {
               child: SizedBox(
                 width: widthSize,
                 child: GridView.count(
-                  padding:const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20),
                     crossAxisCount: 2,
                     crossAxisSpacing: 2,
                     mainAxisSpacing: 2,
                     childAspectRatio: 0.8,
                     shrinkWrap: true,
                     physics: const BouncingScrollPhysics(),
-                   
                     children: [
-                      
                       ...listClothings
                           .map((e) => ProductSimpleView(
                                 linkList: e.linkList!,
