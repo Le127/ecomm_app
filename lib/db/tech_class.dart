@@ -1,22 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Sports {
+class Tech {
   final String? name;
   final List<String>? linkList;
   final double? price;
   final bool? dropDown;
   final String? detail;
 
-  Sports({this.name, this.linkList, this.price, this.dropDown, this.detail});
+  Tech({this.name, this.linkList, this.price, this.dropDown, this.detail});
 
 //
 //ADD
-  Future<void> addSport(Sports sportsProduct) {
-    // Create a CollectionReference called sports that references the firestore collection
-    CollectionReference sports =
-        FirebaseFirestore.instance.collection('sports');
+  Future<void> addTech(Tech sportsProduct) {
+    // Create a CollectionReference called tech that references the firestore collection
+    CollectionReference tech = FirebaseFirestore.instance.collection('tech');
     //add clothes in sports collection
-    return sports
+    return tech
         .add({
           "name": name,
           "linkList": linkList,
@@ -25,8 +24,8 @@ class Sports {
           "detail": detail
         })
         // ignore: avoid_print
-        .then((value) => print("added sports"))
+        .then((value) => print("added tech"))
         // ignore: avoid_print
-        .catchError((error) => print("Failed to add sports: $error"));
+        .catchError((error) => print("Failed to add tech: $error"));
   }
 }
