@@ -30,7 +30,7 @@
 .pub-cache/
 .pub/
 /build/
-.lib\db\helpers\mercadopago\credentials_mp.dart
+lib/db/helpers/mercadopago/credentials_mp.dart
 # Web related
 lib/generated_plugin_registrant.dart
 
