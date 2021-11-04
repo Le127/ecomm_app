@@ -7,6 +7,7 @@ class ProductSimpleView extends StatelessWidget {
   final double price;
   final bool? dropDown;
   final List<String>? dropDownValues;
+  final String? detail;
 
   const ProductSimpleView({
     Key? key,
@@ -15,6 +16,7 @@ class ProductSimpleView extends StatelessWidget {
     this.linkList = const [],
     this.dropDown,
     this.dropDownValues,
+    this.detail,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -40,12 +42,12 @@ class ProductSimpleView extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (_) => UniqueProductPage(
-            urlImage: linkList,
-            detail: productDetail,
-            price: price,
-            dropDown: dropDown,
-            dropDownValues: dropDownValues,
-          ),
+              urlImage: linkList,
+              detailName: productDetail,
+              price: price,
+              dropDown: dropDown,
+              dropDownValues: dropDownValues,
+              detail: detail),
         ),
       ),
       child: Card(
