@@ -48,37 +48,45 @@ class _ProductCardState extends State<ProductCard> {
       child: Card(
         child: Column(
           children: [
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             Image.network(urlImage, width: 250, height: 250),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...widget.link.map(
-                  (e) => GestureDetector(
-                      child: Image.network(e, width: 50, height: 50),
-                      onTap: () => setState(() {
-                            urlImage = e;
-                          })),
-                )
-              ],
+            const SizedBox(height: 10),
+            Flexible(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ...widget.link.map(
+                    (e) => GestureDetector(
+                        child: Image.network(e, width: 50, height: 50),
+                        onTap: () => setState(() {
+                              urlImage = e;
+                            })),
+                  )
+                ],
+              ),
             ),
             const SizedBox(height: 10),
-            Text(widget.detailName,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
+            Flexible(
+              child: Text(widget.detailName,
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.w400)),
+            ),
             const SizedBox(height: 10),
-            Text("\$ ${widget.price}",
-                style:
-                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Flexible(
+              child: Text("\$ ${widget.price}",
+                  style: const TextStyle(
+                      fontSize: 22, fontWeight: FontWeight.bold)),
+            ),
             const SizedBox(height: 10),
-            RatingStars(
-                value: value,
-                valueLabelVisibility: false,
-                onValueChanged: (v) {
-                  setState(() => value = v);
-                }),
-            const SizedBox(height: 10),
+            Flexible(
+              child: RatingStars(
+                  value: value,
+                  valueLabelVisibility: false,
+                  onValueChanged: (v) {
+                    setState(() => value = v);
+                  }),
+            ),
+            const Flexible(child: SizedBox(height: 10)),
 
             //dropDown?
             widget.dropDown == true
@@ -97,15 +105,22 @@ class _ProductCardState extends State<ProductCard> {
                       });
                     },
                   )
-                : Text(widget.detail!),
-            const SizedBox(height: 10),
+                : Expanded(
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(child: Text(widget.detail!)),
+                    )),
+                  ),
+            const Expanded(child: SizedBox(height: 10)),
             ElevatedButton(
-                style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all(const Size(300, 20)),
-                ),
-                onPressed: () {},
-                child: const Text("Pay",
-                    style: TextStyle(fontWeight: FontWeight.bold)))
+              style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all(const Size(300, 20)),
+              ),
+              onPressed: () {},
+              child: const Text("Pay",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
           ],
         ),
       ),
