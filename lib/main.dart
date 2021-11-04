@@ -11,6 +11,7 @@ import 'package:ecomm_app/pages/tech_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
