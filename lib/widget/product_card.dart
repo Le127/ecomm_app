@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:ecomm_app/db/helpers/mercadopago/credentials_mp.dart';
 
 class ProductCard extends StatefulWidget {
   final List<String> link;
@@ -117,7 +120,7 @@ class _ProductCardState extends State<ProductCard> {
               style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all(const Size(300, 20)),
               ),
-              onPressed: () {},
+              onPressed: () => runMercadoPago(widget.detailName, widget.price),
               child: const Text("Pay",
                   style: TextStyle(fontWeight: FontWeight.bold)),
             ),
@@ -127,3 +130,31 @@ class _ProductCardState extends State<ProductCard> {
     );
   }
 }
+
+Future<void> runMercadoPago(detailName, price) async {
+  createPreferences(detailName, price).then((res) async {
+    var sandBoxInitPoint = res["response"]["sandbox_init_point"];
+    return launchURL(sandBoxInitPoint);
+  });
+}
+
+Future<Map<String, dynamic>> createPreferences(detailName, price) async {
+  var mp = MP(mpClientId, mpClientSecret);
+  var preference = {
+    "items": [
+      {
+        "title": detailName,
+        "quantity": 1,
+        "currency_id": "ARS",
+        "unit_price": price,
+      }
+    ],
+  };
+
+  var result = await mp.createPreference(preference);
+
+  return result;
+}
+
+void launchURL(url) async =>
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
