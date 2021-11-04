@@ -133,8 +133,8 @@ class _ProductCardState extends State<ProductCard> {
 
 Future<void> runMercadoPago(detailName, price) async {
   createPreferences(detailName, price).then((res) async {
-    var initPoint = res["response"]["init_point"];
-    return launchURL(initPoint);
+    var sandBoxInitPoint = res["response"]["sandbox_init_point"];
+    return launchURL(sandBoxInitPoint);
   });
 }
 
@@ -145,11 +145,10 @@ Future<Map<String, dynamic>> createPreferences(detailName, price) async {
       {
         "title": detailName,
         "quantity": 1,
-        "currency_id": "USD",
+        "currency_id": "ARS",
         "unit_price": price,
       }
     ],
-    "payer": {"name": "TestBot", "email": "test@test.com"},
   };
 
   var result = await mp.createPreference(preference);
