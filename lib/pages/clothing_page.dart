@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:ecomm_app/db/helpers/clothing_helpers.dart';
+import 'package:ecomm_app/db/clothing_class.dart';
 
 import 'package:ecomm_app/widget/product_simple_view.dart';
 

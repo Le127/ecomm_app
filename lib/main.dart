@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import "dart:developer" as developer;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:ecomm_app/pages/unique_product_page.dart';
 import 'package:ecomm_app/pages/all_products_page.dart';
@@ -9,9 +10,9 @@ import 'package:ecomm_app/pages/sports_page.dart';
 import 'package:ecomm_app/pages/game_page.dart';
 import 'package:ecomm_app/pages/tech_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
