@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import "dart:developer" as developer;
 
-
+import 'package:ecomm_app/pages/auth_page.dart';
 import 'package:ecomm_app/pages/unique_product_page.dart';
 import 'package:ecomm_app/pages/all_products_page.dart';
 import 'package:ecomm_app/pages/clothing_page.dart';
@@ -10,9 +10,9 @@ import 'package:ecomm_app/pages/sports_page.dart';
 import 'package:ecomm_app/pages/game_page.dart';
 import 'package:ecomm_app/pages/tech_page.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+
   runApp(const MyApp());
 }
 
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            initialRoute: "allProducts",
+            initialRoute: "auth",
             routes: {
               "allProducts": (_) => const AllProductsPage(),
               "clothing": (_) => const ClothingPage(),
@@ -59,6 +59,7 @@ class _MyAppState extends State<MyApp> {
               "sports": (_) => const SportsPage(),
               "game": (_) => const GamePage(),
               "uniqueProduct": (_) => const UniqueProductPage(urlImage: []),
+              "auth": (_) => AuthPage(),
             },
           );
         }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,6 +17,16 @@ class AllProductsPage extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              onPressed: ()async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushNamedAndRemoveUntil(context, "auth", (route) => false);
+              },
+              child: const FaIcon(FontAwesomeIcons.signOutAlt))
+        ],
+      ),
       backgroundColor: Colors.black,
       body: Center(
         child: SizedBox(
