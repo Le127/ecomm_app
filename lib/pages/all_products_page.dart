@@ -22,7 +22,7 @@ class AllProductsPage extends StatelessWidget {
           ElevatedButton(
               onPressed: ()async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(context, "auth", (route) => false);
+                Navigator.pushNamedAndRemoveUntil(context, "login", (route) => false);
               },
               child: const FaIcon(FontAwesomeIcons.signOutAlt))
         ],
