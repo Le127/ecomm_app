@@ -1,14 +1,14 @@
 library my_credentialsmp.globals;
 
 //Sandbox
-String mpTESTPublicKey = "TEST-eb4d8567-b6bc-49bc-bef3-c1685e92dc98";
+String mpTESTPublicKey = "TEST-5a3a2cdd-d2ec-4560-b518-43a2e9f1a154";
 String mpTESTAccessToken =
-    "TEST-7443539125018215-110413-ffa755b4a62c3645eb96e28fade729d6-145466475";
+    "TEST-7443539125018215-110514-7dc1e275c50bea03b7ecfe92add095c6-145466475";
 
 //Production
-String mpPublicKey = "APP_USR-8edf47ff-8434-413f-b8e8-777abcd1e19b";
+String mpPublicKey = "APP_USR-5575354e-993c-4944-a7ce-0928e9a1dd09";
 String mpAccessToken =
-    "APP_USR-7443539125018215-110413-5c1cc1de802812dab0f77be6f17530a4-145466475";
+    "APP_USR-7443539125018215-110514-5508a18cd65c536457dacbef88964fd6-145466475";
 
 String mpClientId = "7443539125018215";
-String mpClientSecret = "VEGPNqMT09Ho8Pl1xul8R21GLJB2VNNA";
+String mpClientSecret = "YVesT7wW0IioQIfqO1wpUr5rQqWNmMak";
