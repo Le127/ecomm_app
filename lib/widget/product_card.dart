@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
-import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 import 'package:ecomm_app/db/helpers/mercadopago/credentials_mp.dart';
