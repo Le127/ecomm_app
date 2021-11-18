@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
-
 class ProductCard extends StatefulWidget {
   final List<String> link;
   final String detailName;
@@ -77,42 +76,19 @@ class _ProductCardState extends State<ProductCard> {
           children: [
             const SizedBox(height: 10),
             Image.network(urlImage, width: 250, height: 250),
+
             const SizedBox(height: 10),
-            Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ...widget.link.map(
-                    (e) => GestureDetector(
-                        child: Image.network(e, width: 50, height: 50),
-                        onTap: () => setState(() {
-                              urlImage = e;
-                            })),
-                  )
-                ],
-              ),
-            ),
+            thumbnailImage(),
+
             const SizedBox(height: 10),
-            Flexible(
-              child: Text(widget.detailName,
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.w400)),
-            ),
+            productName(),
+
             const SizedBox(height: 10),
-            Flexible(
-              child: Text("\$ ${widget.price}",
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.bold)),
-            ),
+            productPrice(),
+
             const SizedBox(height: 10),
-            Flexible(
-              child: RatingStars(
-                  value: value,
-                  valueLabelVisibility: false,
-                  onValueChanged: (v) {
-                    setState(() => value = v);
-                  }),
-            ),
+            ratingStars(),
+
             const Flexible(child: SizedBox(height: 10)),
 
             //dropDown?
@@ -139,18 +115,60 @@ class _ProductCardState extends State<ProductCard> {
                       child: SingleChildScrollView(child: Text(widget.detail!)),
                     )),
                   ),
+
             const Expanded(child: SizedBox(height: 10)),
-            ElevatedButton(
-              style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all(const Size(300, 20)),
-              ),
-              onPressed: () => runMercadoPago(widget.detailName, widget.price),
-              child: const Text("Pay",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-            ),
+
+            paymentButton(),
           ],
         ),
       ),
     );
+  }
+
+  //product thumbnail images
+  Flexible thumbnailImage() {
+    return Flexible(
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      ...widget.link.map((e) => GestureDetector(
+          child: Image.network(e, width: 50, height: 50),
+          onTap: () => setState(() {
+                urlImage = e;
+              })))
+    ]));
+  }
+
+  //product name
+  Flexible productName() {
+    return Flexible(
+        child: Text(widget.detailName,
+            style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w400)));
+  }
+
+  //product price
+  Flexible productPrice() {
+    return Flexible(
+        child: Text("\$ ${widget.price}",
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)));
+  }
+
+  //rating stars
+  Flexible ratingStars() {
+    return Flexible(
+        child: RatingStars(
+            value: value,
+            valueLabelVisibility: false,
+            onValueChanged: (v) {
+              setState(() => value = v);
+            }));
+  }
+
+  //payment button
+  ElevatedButton paymentButton() {
+    return ElevatedButton(
+        style: ButtonStyle(
+            fixedSize: MaterialStateProperty.all(const Size(300, 20))),
+        onPressed: () => runMercadoPago(widget.detailName, widget.price),
+        child:
+            const Text("Pay", style: TextStyle(fontWeight: FontWeight.bold)));
   }
 }
