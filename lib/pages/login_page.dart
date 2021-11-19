@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pushNamedAndRemoveUntil(
                           context, "register", (route) => false);
                     },
-                    child: const Text('No tengo una cuenta'))
+                    child: const Text("Don't have an account?"))
               ],
             ),
           ),

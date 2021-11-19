@@ -147,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextButton(onPressed: (){
                    Navigator.pushNamedAndRemoveUntil(
                                     context, "login", (route) => false);
-                }, child:const Text('Ya tengo cuenta'))
+                }, child:const Text("Already have an account?"))
               ],
             ),
           ),
