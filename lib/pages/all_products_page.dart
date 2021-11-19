@@ -1,8 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AllProductsPage extends StatelessWidget {
+class AllProductsPage extends StatefulWidget {
   const AllProductsPage({Key? key}) : super(key: key);
+
+  @override
+  State<AllProductsPage> createState() => _AllProductsPageState();
+}
+
+class _AllProductsPageState extends State<AllProductsPage> {
+  String? email;
+  @override
+  void initState() {
+    email = '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +27,32 @@ class AllProductsPage extends StatelessWidget {
       widthSize = 500;
       heightSize = 500;
     }
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      setState(() {
+        email =
+            currentUser.email!.substring(0, currentUser.email!.indexOf('@'));
+      });
+    }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            const Spacer(),
+            Text(email!),
+          ],
+        ),
+        actions: [
+          ElevatedButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, "login", (route) => false);
+              },
+              child: const FaIcon(FontAwesomeIcons.signOutAlt))
+        ],
+      ),
       backgroundColor: Colors.black,
       body: Center(
         child: SizedBox(

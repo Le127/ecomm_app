@@ -1,8 +1,11 @@
+import 'package:ecomm_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import "dart:developer" as developer;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+
+import 'package:ecomm_app/pages/register_page.dart';
 import 'package:ecomm_app/pages/unique_product_page.dart';
 import 'package:ecomm_app/pages/all_products_page.dart';
 import 'package:ecomm_app/pages/clothing_page.dart';
@@ -51,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            initialRoute: "allProducts",
+            initialRoute: "login",
             routes: {
               "allProducts": (_) => const AllProductsPage(),
               "clothing": (_) => const ClothingPage(),
@@ -59,6 +62,8 @@ class _MyAppState extends State<MyApp> {
               "sports": (_) => const SportsPage(),
               "game": (_) => const GamePage(),
               "uniqueProduct": (_) => const UniqueProductPage(urlImage: []),
+              "register": (_) => const RegisterPage(),
+              "login": (_) => const LoginPage(),
             },
           );
         }
