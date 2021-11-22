@@ -11,6 +11,7 @@ class AllProductsPage extends StatefulWidget {
 
 class _AllProductsPageState extends State<AllProductsPage> {
   String? email;
+
   @override
   void initState() {
     email = '';

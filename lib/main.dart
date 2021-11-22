@@ -1,9 +1,9 @@
 import 'package:ecomm_app/pages/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import "dart:developer" as developer;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 
 import 'package:ecomm_app/pages/register_page.dart';
 import 'package:ecomm_app/pages/unique_product_page.dart';
@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> {
             textDirection: TextDirection.ltr,
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
+          User? currentUser = FirebaseAuth.instance.currentUser;
+          
           developer.log("Main , Firebase init. DONE OK!");
           return MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -54,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            initialRoute: "login",
+            initialRoute: currentUser == null ? "login" : "allProducts",
             routes: {
               "allProducts": (_) => const AllProductsPage(),
               "clothing": (_) => const ClothingPage(),

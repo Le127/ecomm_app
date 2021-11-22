@@ -15,8 +15,9 @@ class _LoginPageState extends State<LoginPage> {
       // ignore: avoid_print
       print('User is currently signed out!');
     } else {
+      User? currentUser = FirebaseAuth.instance.currentUser;
       // ignore: avoid_print
-      print('User is signed in!');
+      print({'User is signed in! ${currentUser!.email}'});
     }
   });
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
