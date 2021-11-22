@@ -12,15 +12,15 @@ class ProductCard extends StatefulWidget {
   final List<String>? dropDownValues;
   final String? detail;
 
-  const ProductCard(
-      {Key? key,
-      required this.link,
-      required this.detailName,
-      required this.price,
-      this.dropDown,
-      this.dropDownValues,
-      this.detail})
-      : super(key: key);
+  const ProductCard({
+    Key? key,
+    required this.link,
+    required this.detailName,
+    required this.price,
+    this.dropDown,
+    this.dropDownValues,
+    this.detail,
+  }) : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();

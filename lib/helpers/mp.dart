@@ -1,12 +1,11 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-Future<void> runMercadoPago(detailName, price) async {
-  await dotenv.load();
-
+Future<void> runMercadoPago(String? detailName, double price) async {
   String? mpTESTPublicKey = dotenv.env['MPTEST_PUBLICKEY'];
 
   createPreferences(detailName, price).then((res) async {
@@ -22,9 +21,9 @@ Future<void> runMercadoPago(detailName, price) async {
 }
 
 Future<Map<String, dynamic>> createPreferences(detailName, price) async {
-  //
-  //ES NECESARIO AGREGAR UN EMAIL PARA QUE INGRESE EN EL CHECKOUT
-  //
+User? currentUser = FirebaseAuth.instance.currentUser!;
+print(currentUser.email);
+
   var mp = MP(dotenv.env['MP_CLIENT_ID'], dotenv.env['MP_CLIENT_SECRET']);
   var preference = {
     "items": [
@@ -36,7 +35,7 @@ Future<Map<String, dynamic>> createPreferences(detailName, price) async {
       }
     ],
     "payer": {
-      "email": "john@yourdomain.com",
+      "email": currentUser.email,
     }
   };
 
