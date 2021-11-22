@@ -22,7 +22,6 @@ Future<void> runMercadoPago(String? detailName, double price) async {
 
 Future<Map<String, dynamic>> createPreferences(detailName, price) async {
 User? currentUser = FirebaseAuth.instance.currentUser!;
-print(currentUser.email);
 
   var mp = MP(dotenv.env['MP_CLIENT_ID'], dotenv.env['MP_CLIENT_SECRET']);
   var preference = {
