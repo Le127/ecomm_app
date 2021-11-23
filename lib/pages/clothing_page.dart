@@ -22,6 +22,7 @@ class ClothingPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('clothings');
 
     return Scaffold(
+      backgroundColor: Colors.yellow.shade50,
       floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Clothings(
             productDetail: "Diver Hoodie with Slim Kangaroo Hood",

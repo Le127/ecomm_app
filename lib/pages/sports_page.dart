@@ -19,6 +19,7 @@ class SportsPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('sports');
 
     return Scaffold(
+       backgroundColor: Colors.green.shade50,
       floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Sports(
             linkList: [

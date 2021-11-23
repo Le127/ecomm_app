@@ -20,6 +20,7 @@ class GamePage extends StatelessWidget {
     CollectionReference games = FirebaseFirestore.instance.collection('game');
 
     return Scaffold(
+      backgroundColor: Colors.red.shade50,
       floatingActionButton: FloatingActionButton(onPressed: () {
         final game = Game(
             productDetail: "Monitor gamer",

@@ -18,6 +18,7 @@ class TechPage extends StatelessWidget {
     CollectionReference sports = FirebaseFirestore.instance.collection('tech');
 
     return Scaffold(
+      backgroundColor: Colors.deepPurple.shade50,
       floatingActionButton: FloatingActionButton(onPressed: () {
         final tech = Tech(
             linkList: [
@@ -40,7 +41,7 @@ class TechPage extends StatelessWidget {
           "Tech Page",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.green.shade300.withOpacity(0.9),
+        backgroundColor: Colors.deepPurple.shade300.withOpacity(0.9),
       ),
       body: FutureBuilder<QuerySnapshot>(
           future: sports.get(),
