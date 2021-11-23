@@ -68,11 +68,12 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 2.5),
-      width: 400,
-      height: 600, 
+      padding: const EdgeInsets.all(2),
+    width: 350,
+    height: 550,
       child: Card(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 10),
             Image.network(urlImage, width: 200, height: 200),
