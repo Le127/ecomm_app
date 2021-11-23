@@ -41,7 +41,7 @@ class UniqueProductPage extends StatelessWidget {
         child: Flex(direction: Axis.vertical, children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.all(30),
+              margin: const EdgeInsets.only(top: 22, right: 10, left: 10, bottom:10),
               child: ProductCard(
                 link: urlImage,
                 detailName: detailName!,

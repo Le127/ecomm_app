@@ -68,14 +68,14 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-      width: 350,
-      height: 550,
+      margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 2.5),
+      width: 400,
+      height: 600, 
       child: Card(
         child: Column(
           children: [
             const SizedBox(height: 10),
-            Image.network(urlImage, width: 250, height: 250),
+            Image.network(urlImage, width: 200, height: 200),
 
             const SizedBox(height: 10),
             thumbnailImage(),
@@ -128,6 +128,7 @@ class _ProductCardState extends State<ProductCard> {
   //product thumbnail images
   Flexible thumbnailImage() {
     return Flexible(
+      flex: 2,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       ...widget.link.map((e) => GestureDetector(
           child: Image.network(e, width: 50, height: 50),
@@ -138,10 +139,9 @@ class _ProductCardState extends State<ProductCard> {
   }
 
   //product name
-  Flexible productName() {
-    return Flexible(
-        child: Text(widget.detailName,
-            style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w400)));
+   productName() {
+    return Text(widget.detailName, textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w400));
   }
 
   //product price
