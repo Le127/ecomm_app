@@ -69,28 +69,21 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(2),
-    width: 350,
-    height: 550,
+      width: 350,
+      height: 550,
       child: Card(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 10),
             Image.network(urlImage, width: 200, height: 200),
 
-            const SizedBox(height: 10),
             thumbnailImage(),
 
-            const SizedBox(height: 10),
             productName(),
 
-            const SizedBox(height: 10),
             productPrice(),
 
-            const SizedBox(height: 10),
             ratingStars(),
-
-            const Flexible(child: SizedBox(height: 10)),
 
             //dropDown?
             widget.dropDown == true
@@ -113,11 +106,16 @@ class _ProductCardState extends State<ProductCard> {
                     child: Center(
                         child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SingleChildScrollView(child: Text(widget.detail!)),
+                      child: Scrollbar(
+                        
+                        thickness: 3,
+                        radius: const Radius.circular(100),
+                       
+                        child:
+                            SingleChildScrollView(child: Text(widget.detail!)),
+                      ),
                     )),
                   ),
-
-            const Expanded(child: SizedBox(height: 10)),
 
             paymentButton(),
           ],
@@ -129,25 +127,27 @@ class _ProductCardState extends State<ProductCard> {
   //product thumbnail images
   Flexible thumbnailImage() {
     return Flexible(
-      flex: 2,
+        flex: 2,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      ...widget.link.map((e) => GestureDetector(
-          child: Image.network(e, width: 50, height: 50),
-          onTap: () => setState(() {
-                urlImage = e;
-              })))
-    ]));
+          ...widget.link.map((e) => GestureDetector(
+              child: Image.network(e, width: 50, height: 50),
+              onTap: () => setState(() {
+                    urlImage = e;
+                  })))
+        ]));
   }
 
   //product name
-   productName() {
-    return Text(widget.detailName, textAlign: TextAlign.center,
+ Text productName() {
+    return Text(widget.detailName,
+        textAlign: TextAlign.center,
         style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w400));
   }
 
   //product price
   Flexible productPrice() {
     return Flexible(
+        flex: 0,
         child: Text("\$ ${widget.price}",
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)));
   }
@@ -155,6 +155,7 @@ class _ProductCardState extends State<ProductCard> {
   //rating stars
   Flexible ratingStars() {
     return Flexible(
+        flex: 0,
         child: RatingStars(
             value: value,
             valueLabelVisibility: false,
