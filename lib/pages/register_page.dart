@@ -21,9 +21,11 @@ class _RegisterPageState extends State<RegisterPage> {
   });
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
- final TextEditingController _emailController = TextEditingController(text: '');
- final TextEditingController _passwordController = TextEditingController(text: '');
- final TextEditingController _confirmPasswordController =
+  final TextEditingController _emailController =
+      TextEditingController(text: '');
+  final TextEditingController _passwordController =
+      TextEditingController(text: '');
+  final TextEditingController _confirmPasswordController =
       TextEditingController(text: '');
 
   @override
@@ -33,23 +35,30 @@ class _RegisterPageState extends State<RegisterPage> {
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-               color: Colors.grey.shade700.withOpacity(0.3),),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey.shade700.withOpacity(0.3),
+              ),
               padding: const EdgeInsets.all(10),
               width: 300,
               height: 450,
-             
               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Register', style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.w300),),
+                  const Text(
+                    'Register',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                        fontWeight: FontWeight.w300),
+                  ),
                   const SizedBox(height: 15),
                   Form(
                     key: _formKey,
                     child: Column(
                       children: [
                         TextFormField(
-                          style:const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter some text';
@@ -69,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 10),
                         TextFormField(
-                          style:const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           obscureText: true,
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -89,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 10),
                         TextFormField(
-                          style:const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           obscureText: true,
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -97,7 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             return null;
                           },
-                          // keyboardType: type,
                           controller: _confirmPasswordController,
                           decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -116,25 +124,30 @@ class _RegisterPageState extends State<RegisterPage> {
                                     _confirmPasswordController.text) {
                                   // ignore: unused_local_variable
                                   UserCredential userCredential =
-                                      await FirebaseAuth.instance
+                                      await FirebaseAuth
+                                          .instance
                                           .createUserWithEmailAndPassword(
                                               email: _emailController.text,
-                                              password: _passwordController.text);
+                                              password:
+                                                  _passwordController.text);
                                   _emailController.clear();
                                   _passwordController.clear();
                                   _confirmPasswordController.clear();
-                  
+
                                   Navigator.pushNamedAndRemoveUntil(
                                       context, "allProducts", (route) => false);
                                 }
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'weak-password') {
-                                  // ignore: avoid_print
-                                  print('The password provided is too weak.');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              ('The password provided is too weak.'))));
                                 } else if (e.code == 'email-already-in-use') {
-                                  // ignore: avoid_print
-                                  print(
-                                      'The account already exists for that email.');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              ('The account already exists for that email.'))));
                                 }
                               } catch (e) {
                                 // ignore: avoid_print
@@ -145,10 +158,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  TextButton(onPressed: (){
-                     Navigator.pushNamedAndRemoveUntil(
-                                      context, "login", (route) => false);
-                  }, child:const Text("Already have an account?"))
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, "login", (route) => false);
+                      },
+                      child: const Text("Already have an account?"))
                 ],
               ),
             ),

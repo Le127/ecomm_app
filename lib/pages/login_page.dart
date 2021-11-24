@@ -100,22 +100,25 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () async {
                               try {
                                 // ignore: unused_local_variable
-                                UserCredential userCredential = await FirebaseAuth
-                                    .instance
-                                    .signInWithEmailAndPassword(
-                                        email: _emailController.text,
-                                        password: _passwordController.text);
+                                UserCredential userCredential =
+                                    await FirebaseAuth.instance
+                                        .signInWithEmailAndPassword(
+                                            email: _emailController.text,
+                                            password: _passwordController.text);
                                 _emailController.clear();
                                 _passwordController.clear();
                                 Navigator.pushNamedAndRemoveUntil(
                                     context, "allProducts", (route) => false);
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'user-not-found') {
-                                  // ignore: avoid_print
-                                    print('Wrong password provided for that user.');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('User not found')));
                                 } else if (e.code == 'wrong-password') {
-                                  // ignore: avoid_print
-                                  print('Wrong password provided for that user.');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              'Wrong password provided for that user.')));
                                 }
                               }
                             },
