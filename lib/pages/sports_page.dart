@@ -20,7 +20,7 @@ class SportsPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.green.shade50,
-      floatingActionButton: FloatingActionButton(onPressed: () {
+      /* floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Sports(
             linkList: [
               "https://m.media-amazon.com/images/I/5174IefYCuL._AC_SL1279_.jpg",
@@ -34,9 +34,9 @@ class SportsPage extends StatelessWidget {
                 "made of soft, 100% latex for a waterproof, secure fit. Extra durable and won't snag hair. Edge design resists rolling, protects hair from pool chemicals and uv rays");
 
         clothes.addSport(clothes);
-      }),
+      }), */
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
+        automaticallyImplyLeading: false,
         title: const Text(
           "Sports Page",
           style: TextStyle(color: Colors.black),
@@ -67,25 +67,23 @@ class SportsPage extends StatelessWidget {
               return Center(
                 child: SizedBox(
                   width: widthSize,
-                  child: SingleChildScrollView(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 2,
+                    mainAxisSpacing: 2,
+                    childAspectRatio: 0.8,
+                    shrinkWrap: true,
                     physics: const BouncingScrollPhysics(),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 2,
-                      childAspectRatio: 0.8,
-                      shrinkWrap: true,
-                      children: [
-                        ...listSports
-                            .map((e) => ProductSimpleView(
-                                linkList: e.linkList!,
-                                productDetail: e.name!,
-                                price: e.price!,
-                                dropDown: e.dropDown!,
-                                detail: e.detail))
-                            .toList()
-                      ],
-                    ),
+                    children: [
+                      ...listSports
+                          .map((e) => ProductSimpleView(
+                              linkList: e.linkList!,
+                              productDetail: e.name!,
+                              price: e.price!,
+                              dropDown: e.dropDown!,
+                              detail: e.detail))
+                          .toList()
+                    ],
                   ),
                 ),
               );

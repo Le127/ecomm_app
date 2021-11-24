@@ -21,22 +21,8 @@ class GamePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.red.shade50,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        final game = Game(
-            productDetail: "Monitor gamer",
-            linkList: [
-              "https://http2.mlstatic.com/D_NQ_NP_664672-MLA46351142917_062021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_833344-MLA46351250473_062021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_981998-MLA46351142920_062021-O.webp",
-            ],
-            price: 34.999,
-            dropDown: false,
-            detail: 'Monitor gamer AOpen MH1 25MH1Q P led 25'' negro 100V/240V');
-
-        game.addGames(game);
-      }),
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
+        automaticallyImplyLeading: false,
         title: const Text(
           "Game Page",
           style: TextStyle(color: Colors.black),
