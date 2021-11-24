@@ -19,18 +19,19 @@ class SportsPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('sports');
 
     return Scaffold(
-       backgroundColor: Colors.green.shade50,
+      backgroundColor: Colors.green.shade50,
       floatingActionButton: FloatingActionButton(onPressed: () {
         final clothes = Sports(
             linkList: [
-              "https://http2.mlstatic.com/D_NQ_NP_757009-MLA46582195155_072021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_930586-MLA46582043771_072021-O.webp",
-              "https://http2.mlstatic.com/D_NQ_NP_786373-MLA31095682546_062019-O.webp",
+              "https://m.media-amazon.com/images/I/5174IefYCuL._AC_SL1279_.jpg",
+              "https://m.media-amazon.com/images/I/51YMSRhnx-L._AC_SL1279_.jpg",
+              "https://m.media-amazon.com/images/I/51s04BWx0XL._AC_SL1279_.jpg",
             ],
-            name: "Molten Gr7 Basketball Ball",
-            price: 26.99,
+            name: 'Arena Soft Latex Unisex Swim Cap for Women and Men',
+            price: 8.57,
             dropDown: false,
-            detail: "Size");
+            detail:
+                "made of soft, 100% latex for a waterproof, secure fit. Extra durable and won't snag hair. Edge design resists rolling, protects hair from pool chemicals and uv rays");
 
         clothes.addSport(clothes);
       }),
