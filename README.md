@@ -10,7 +10,7 @@ To use Mercadopago it is necessary to have the credentials. Create an .env in th
 
 https://www.mercadopago.com.ar/developers/es/guides/online-payments/checkout-pro/previous-requirements
 
-.env example 
+Code .env file:
 
  ```
  //IMPORTANT do not change the name of the variables 
