@@ -4,6 +4,7 @@ A simple ecommerce app built with Flutter for Android and iOS.
 
 
 <img src="https://user-images.githubusercontent.com/71610086/146559897-d51b8933-d009-401b-85aa-b932eb19b78d.gif"  width="250" height="400" >
+<img src="https://user-images.githubusercontent.com/71610318/146647931-6b28324a-7b13-46d7-9496-b5cc6f4e4f8e.gif"  width="250" height="500" >
 
 
 To use Mercadopago it is necessary to have the credentials. Create an .env in the root of the project.
